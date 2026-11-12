@@ -7,19 +7,22 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const allowedOrigins = (process.env.FRONTEND_ORIGINS || '')
-  .split(',')
-  .map((origin) => origin.trim())
-  .filter(Boolean);
+const allowedOrigins = new Set([
+  'https://sketchbeautysalon.netlify.app',
+  ...(process.env.FRONTEND_ORIGINS || '')
+    .split(',')
+    .map((origin) => origin.trim().replace(/\/+$/, ''))
+    .filter(Boolean)
+]);
 
 // Middleware
 app.use(cors({
   origin(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin) {
       return callback(null, true);
     }
 
-    return callback(new Error('Origin is not allowed by CORS.'));
+    return callback(null, allowedOrigins.has(origin));
   }
 }));
 app.use(express.json());
