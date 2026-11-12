@@ -10,7 +10,8 @@ const frontendFiles = [
   'styles.css',
   'script.js'
 ];
-const renderApiUrl = process.env.RENDER_API_URL?.trim().replace(/\/+$/, '') || '';
+const renderApiUrl = process.env.RENDER_API_URL?.trim().replace(/\/+$/, '')
+  || 'https://sketch-gg29.onrender.com';
 
 if (renderApiUrl) {
   const parsedApiUrl = new URL(renderApiUrl);

@@ -1,3 +1,6 @@
 [build]
   command = "npm run build"
   publish = "dist"
+
+[build.environment]
+  RENDER_API_URL = "https://sketch-gg29.onrender.com"
