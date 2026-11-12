@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sketch Beauty Salon | Luxury Beauty & Hair Care</title>
+  <meta name="description" content="Welcome to Sketch Beauty Salon - Premier destination for luxury hair styling, bridal makeover, and advanced skin care treatments.">
+  <link rel="stylesheet" href="styles.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Header / Navigation (Consistent) -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">S</div>
+        <div class="logo-text">Sketch <span>Beauty Salon</span></div>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About Us & Portfolio</a>
+        <a href="contact.html" class="nav-link">Contact & Timings</a>
+        <a href="contact.html#book" class="btn btn-primary" style="margin-left: 0.5rem;">Book Appointment</a>
+      </nav>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Interactive Hero Section -->
+    <section class="hero-slider-section">
+      <div class="hero-slider">
+
+        <!-- Slide 1 -->
+        <div class="hero-slide active">
+          <div class="container">
+            <div class="hero-content-grid">
+              <div class="hero-text-side">
+                <span class="hero-badge"><i class="fas fa-sparkles"></i> Redefining Beauty & Elegance</span>
+                <h1 class="hero-title">Unveil Your True Radiance At Sketch</h1>
+                <p class="hero-description">Experience bespoke hair artistry, royal bridal glow, and soothing spa therapies designed exclusively to highlight your natural elegance.</p>
+                <div class="hero-btn-group">
+                  <a href="contact.html" class="btn btn-primary"><i class="far fa-calendar-alt"></i> Book Appointment</a>
+                  <a href="#gallery" class="btn btn-secondary">Explore Work</a>
+                </div>
+              </div>
+              <div class="hero-image-side">
+                <div class="hero-image-wrapper">
+                  <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80" alt="Salon Hair Treatment">
+                </div>
+                <div class="hero-floating-card">
+                  <div class="floating-icon"><i class="fas fa-crown"></i></div>
+                  <div class="floating-text">
+                    <h4>5,000+ Happy Clients</h4>
+                    <p>Rated 4.9 ★★★★★</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="hero-slide">
+          <div class="container">
+            <div class="hero-content-grid">
+              <div class="hero-text-side">
+                <span class="hero-badge"><i class="fas fa-gem"></i> Luxury Bridal Collection</span>
+                <h1 class="hero-title">Flawless Bridal Makeovers For Your Special Day</h1>
+                <p class="hero-description">From HD airbrush makeup to exquisite hair couture, our master stylists create timeless looks tailored for every bride.</p>
+                <div class="hero-btn-group">
+                  <a href="about.html#orders" class="btn btn-accent"><i class="fas fa-heart"></i> Bridal Packages</a>
+                  <a href="contact.html" class="btn btn-secondary">Consult Stylist</a>
+                </div>
+              </div>
+              <div class="hero-image-side">
+                <div class="hero-image-wrapper">
+                  <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80" alt="Bridal Makeover">
+                </div>
+                <div class="hero-floating-card">
+                  <div class="floating-icon"><i class="fas fa-magic"></i></div>
+                  <div class="floating-text">
+                    <h4>Certified Master Artists</h4>
+                    <p>International Products</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="hero-slide">
+          <div class="container">
+            <div class="hero-content-grid">
+              <div class="hero-text-side">
+                <span class="hero-badge"><i class="fas fa-leaf"></i> Organic Skin Glow</span>
+                <h1 class="hero-title">Rejuvenating Facial & Skin Treatments</h1>
+                <p class="hero-description">Indulge in organic herbal facials, deep scalp detox, and luxury aesthetic care using premium dermatological formulas.</p>
+                <div class="hero-btn-group">
+                  <a href="contact.html" class="btn btn-primary">Reserve Spa Time</a>
+                  <a href="about.html" class="btn btn-secondary">View Services</a>
+                </div>
+              </div>
+              <div class="hero-image-side">
+                <div class="hero-image-wrapper">
+                  <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Facial & Skin Care">
+                </div>
+                <div class="hero-floating-card">
+                  <div class="floating-icon"><i class="fas fa-pump-soap"></i></div>
+                  <div class="floating-text">
+                    <h4>100% Organic Products</h4>
+                    <p>Cruelty-free & Safe</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Slider Controls -->
+      <div class="slider-controls">
+        <button class="slider-arrow" id="prevSlide" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
+        <div class="slider-dot active" data-slide="0"></div>
+        <div class="slider-dot" data-slide="1"></div>
+        <div class="slider-dot" data-slide="2"></div>
+        <button class="slider-arrow" id="nextSlide" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </section>
+
+    <!-- Highlights / Quick Stats Bar -->
+    <section class="highlights-bar">
+      <div class="container">
+        <div class="highlights-grid">
+          <div class="highlight-card">
+            <div class="highlight-number">6+</div>
+            <div class="highlight-label">Years of Excellence</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-number">534+</div>
+            <div class="highlight-label">Transformations</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-number">8+</div>
+            <div class="highlight-label">Cities Served</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-number">100%</div>
+            <div class="highlight-label">Satisfaction Guarantee</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Previous Work Done (Interactive Showcase) -->
+    <section class="gallery-section" id="gallery">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-tagline">Portfolio Highlights</span>
+          <h2 class="section-title">Our Craft & Previous Work</h2>
+          <p class="section-subtitle">Take a glance at some of our recent client transformations crafted by Sketch Beauty Salon experts.</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="gallery-filters">
+          <button class="filter-btn active" data-filter="all">All Work</button>
+          <button class="filter-btn" data-filter="hair">Hair Styling</button>
+          <button class="filter-btn" data-filter="bridal">Bridal Glow</button>
+          <button class="filter-btn" data-filter="makeup">Glam Makeup</button>
+          <button class="filter-btn" data-filter="skin">Skin Care</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+          <!-- Card 1 -->
+          <div class="work-card" data-category="bridal">
+            <div class="work-image-holder">
+              <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=600&q=80" alt="Royal Bridal Makeover">
+              <span class="work-badge">Bridal</span>
+            </div>
+            <div class="work-details">
+              <h3>Royal Bridal Grace</h3>
+              <p>HD Airbrush makeup with subtle golden rose highlights and traditional flower hair weave.</p>
+              <div class="work-footer">
+                <span><i class="far fa-heart"></i> Loved by Client</span>
+                <span>Bridal Order</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="work-card" data-category="hair">
+            <div class="work-image-holder">
+              <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&q=80" alt="Soft Balayage & Waves">
+              <span class="work-badge">Hair Styling</span>
+            </div>
+            <div class="work-details">
+              <h3>Caramel Soft Balayage</h3>
+              <p>Custom pastel caramel toning paired with deep conditioning keratin therapy and bouncy waves.</p>
+              <div class="work-footer">
+                <span><i class="fas fa-cut"></i> Balayage</span>
+                <span>Hair Spa Included</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="work-card" data-category="makeup">
+            <div class="work-image-holder">
+              <img src="https://images.unsplash.com/photo-1500840218059-8f79a5d659fa?auto=format&fit=crop&w=600&q=80" alt="Editorial Glam Makeup">
+              <span class="work-badge">Glam Makeup</span>
+            </div>
+            <div class="work-details">
+              <h3>Rose Nude Evening Glam</h3>
+              <p>Soft smoky eyes, contour perfection, and glossy rose nude lips for a gala evening.</p>
+              <div class="work-footer">
+                <span><i class="fas fa-star"></i> Red Carpet</span>
+                <span>Special Event</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="work-card" data-category="skin">
+            <div class="work-image-holder">
+              <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" alt="Rejuvenating facial skin treatment">
+              <span class="work-badge">Skin Care</span>
+            </div>
+            <div class="work-details">
+              <h3>Radiance-Boosting Facial</h3>
+              <p>A nourishing facial treatment to refresh skin and restore a healthy, hydrated glow.</p>
+              <div class="work-footer">
+                <span><i class="fas fa-spa"></i> Skin Treatment</span>
+                <span>Healthy Glow</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="work-card" data-category="hair">
+            <div class="work-image-holder">
+              <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=600&q=80" alt="Precision Haircut & Blowout">
+              <span class="work-badge">Hair Styling</span>
+            </div>
+            <div class="work-details">
+              <h3>Velvet Layered Bob Cut</h3>
+              <p>Textured layer haircut tailored to frame face structure with glossy glass-hair finish.</p>
+              <div class="work-footer">
+                <span><i class="fas fa-cut"></i> Styling</span>
+                <span>Trend Cut</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="work-card" data-category="bridal">
+            <div class="work-image-holder">
+              <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80" alt="Engagement Makeover">
+              <span class="work-badge">Bridal</span>
+            </div>
+            <div class="work-details">
+              <h3>Pre-Wedding Cocktail Glow</h3>
+              <p>Soft glowing skin finish with romantic low bun updo adorned with pearl hairpins.</p>
+              <div class="work-footer">
+                <span><i class="far fa-smile"></i> Engagement</span>
+                <span>Full Package</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center" style="margin-top: 2.5rem;">
+          <a href="about.html#portfolio" class="btn btn-secondary">View Complete Portfolio <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="services-section">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-tagline">Signature Experiences</span>
+          <h2 class="section-title">Services Crafted For You</h2>
+          <p class="section-subtitle">Discover our signature beauty, styling, and wellness treatments designed with luxury pastel aesthetic.</p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-cut"></i></div>
+            <h3>Hair Design & Spa</h3>
+            <p>Custom precision haircuts, balayage coloring, organic keratin smoothing, and deep scalp nourishment.</p>
+            <div class="service-price">Starting at $45</div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-heart"></i></div>
+            <h3>Bridal & Event Makeup</h3>
+            <p>Comprehensive bridal makeovers, HD airbrush application, pre-wedding rituals, and bridesmaid packages.</p>
+            <div class="service-price">Starting at $120</div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-spa"></i></div>
+            <h3>Radiant Skin Facials</h3>
+            <p>Hydra-glow facials, collagen boosting therapy, gold radiance masks, and anti-aging skin treatments.</p>
+            <div class="service-price">Starting at $65</div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-hand-holding-heart"></i></div>
+            <h3>Skin Care & Facials</h3>
+            <p>Hydrating facials, gentle exfoliation, nourishing masks, and personalized skin treatments.</p>
+            <div class="service-price">Starting at $35</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section style="background: linear-gradient(135deg, var(--color-rose-deep), var(--color-primary)); color: white; padding: 4rem 0; text-align: center;">
+      <div class="container">
+        <h2 style="font-size: 2.4rem; color: white; margin-bottom: 1rem;">Ready for Your Beauty Transformation?</h2>
+        <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem auto; opacity: 0.95;">Book an appointment at Sketch Beauty Salon today and let our specialists pamper you.</p>
+        <a href="contact.html" class="btn btn-secondary" style="background-color: white; color: var(--color-text-dark); padding: 0.85rem 2.2rem;">Book Appointment Now <i class="fas fa-calendar-check"></i></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Consistent Footer Across All Pages -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon">S</div>
+            <div class="logo-text">Sketch <span>Beauty Salon</span></div>
+          </div>
+          <p>Sketch Beauty Salon is your premier sanctuary for luxury hair styling, flawless bridal makeup, and rejuvenating skin treatments.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/vidhi.nihalani.08?utm_source=ig_web_button_share_sheet&mdxt=ZDNlZDc0MzIxNw==" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1JdV1Z1Jsm/" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/919665166444" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="WhatsApp" style="background-color: #25D366; color: white;" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Navigation</h4>
+          <ul class="footer-nav">
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home Page</a></li>
+            <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us & Story</a></li>
+            <li><a href="about.html#portfolio"><i class="fas fa-chevron-right"></i> Work Portfolio</a></li>
+            <li><a href="about.html#cities"><i class="fas fa-chevron-right"></i> Vadodara Locations</a></li>
+            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact & Timings</a></li>
+          </ul>
+        </div>
+
+        <!-- Services List -->
+        <div class="footer-col">
+          <h4>Our Services</h4>
+          <ul class="footer-nav">
+            <li><a href="about.html#orders"><i class="fas fa-sparkles"></i> Bridal Makeovers</a></li>
+            <li><a href="about.html#orders"><i class="fas fa-sparkles"></i> Hair Cut & Balayage</a></li>
+            <li><a href="about.html#orders"><i class="fas fa-sparkles"></i> Skin Hydra Facials</a></li>
+            <li><a href="about.html#orders"><i class="fas fa-sparkles"></i> Skin Care & Facials</a></li>
+            <li><a href="about.html#orders"><i class="fas fa-sparkles"></i> On-Location Shoots</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info & Newsletter -->
+        <div class="footer-col">
+          <h4>Contact & Info</h4>
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>D202, Avaneesh Hieghts, Near Podar World School, Canal Rd, Chhani, Vadodara, 391740</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fab fa-whatsapp" style="color: #25D366; font-size: 1.1rem;"></i>
+            <a href="https://wa.me/919665166444" target="_blank" rel="noopener noreferrer" style="color: #25D366; font-weight: 700;">WhatsApp</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <span><a href="mailto:sketchbeauty1980@gmail.com" style="color: inherit;">sketchbeauty1980@gmail.com</a></span>
+          </div>
+
+          <p style="font-size: 0.85rem; margin-top: 1.2rem; color: #a39697;">Subscribe to receive special pastel beauty offers:</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Sketch Beauty Salon offers!');">
+            <input type="email" class="newsletter-input" placeholder="Your email address" aria-label="Your email address for newsletter subscription" required>
+            <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2025 Sketch Beauty Salon. All rights reserved. Crafting Elegance Daily.</div>
+        <div style="display: flex; gap: 1.5rem; align-items: center;">
+          <a href="#" style="color: inherit;">Privacy Policy</a>
+          <a href="#" style="color: inherit;">Terms of Service</a>
+          <a href="#" style="color: inherit;">Bookings</a>
+          <a href="admin.html" aria-label="Admin Access" style="color: inherit; opacity: 0.25; display: inline-flex; align-items: center; transition: opacity 0.3s;" onmouseenter="this.style.opacity='0.8'" onmouseleave="this.style.opacity='0.25'">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="api-config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

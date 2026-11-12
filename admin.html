@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Sketch Beauty Salon</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body style="background-color: var(--color-bg);">
+
+  <!-- Password Protection Modal Overlay -->
+  <div id="adminAuthOverlay" style="position: fixed; inset: 0; background: rgba(45, 38, 39, 0.88); backdrop-filter: blur(8px); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
+    <div style="background: white; border-radius: var(--radius-lg); padding: 2.5rem; width: 100%; max-width: 420px; box-shadow: var(--shadow-lg); text-align: center; border: 1px solid var(--color-border); position: relative;">
+
+      <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--color-rose-soft); color: var(--color-rose-deep); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto; font-size: 1.5rem; box-shadow: var(--shadow-sm);">
+        <i class="fas fa-lock"></i>
+      </div>
+
+      <h2 style="font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--color-text-dark);">Admin Verification</h2>
+      <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.75rem;">Please enter the password to access the Sketch Beauty Salon admin panel.</p>
+
+      <!-- Alert for incorrect password -->
+      <div id="authErrorMsg" class="form-alert" style="margin-bottom: 1.25rem; background-color: #ffebee; color: #c62828; border: 1px solid #ffcdd2; display: none; padding: 0.75rem; font-size: 0.88rem; border-radius: var(--radius-sm);">
+        <i class="fas fa-exclamation-circle"></i> Incorrect Password. Access Denied.
+      </div>
+
+      <form id="adminLoginForm">
+        <div style="margin-bottom: 1.25rem; text-align: left;">
+          <label for="adminPassword" style="font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 0.4rem; color: var(--color-text-dark);">Secret Admin Password</label>
+          <input type="password" id="adminPassword" class="form-input" placeholder="Enter admin password" aria-label="Admin Password Input" required autofocus>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1rem; border-radius: var(--radius-full);">
+          Unlock Dashboard <i class="fas fa-key"></i>
+        </button>
+      </form>
+
+      <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--color-border);">
+        <a href="index.html" style="font-size: 0.85rem; color: var(--color-text-muted); display: inline-flex; align-items: center; gap: 0.4rem;">
+          <i class="fas fa-arrow-left"></i> Return to Main Website
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Header -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">S</div>
+        <div class="logo-text">Sketch <span>Admin Panel</span></div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Main Site</a>
+        <a href="contact.html" class="nav-link">Contact Page</a>
+        <a href="admin.html" class="nav-link active"><i class="fas fa-user-shield"></i> Submissions Panel</a>
+        <button id="logoutBtn" class="btn btn-secondary" style="padding: 0.4rem 1rem; font-size: 0.85rem; border-color: var(--color-rose-medium); color: var(--color-rose-deep);">
+          <i class="fas fa-sign-out-alt"></i> Lock / Logout
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Admin Content (Hidden until authenticated) -->
+  <main class="container" id="adminMainContent" style="padding: 3rem 1.5rem 5rem 1.5rem; display: none;">
+
+    <!-- Dashboard Top Bar -->
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+      <div>
+        <span class="section-tagline"><i class="fas fa-database"></i> Live MongoDB Atlas Feed</span>
+        <h1 style="font-size: 2.2rem;">Client Form Submissions</h1>
+        <p style="color: var(--color-text-muted); font-size: 0.95rem;">Manage appointments and inquiry requests submitted by website visitors.</p>
+      </div>
+
+      <button id="refreshBtn" class="btn btn-secondary" style="gap: 0.5rem;">
+        <i class="fas fa-sync-alt"></i> Refresh Data
+      </button>
+    </div>
+
+    <!-- Stats Summary Cards -->
+    <div class="highlights-grid" style="margin-bottom: 2.5rem;">
+      <div class="highlight-card" style="background: white; border-radius: var(--radius-md); border: 1px solid var(--color-border); box-shadow: var(--shadow-sm);">
+        <div class="highlight-number" id="statTotal">0</div>
+        <div class="highlight-label">Total Submissions</div>
+      </div>
+      <div class="highlight-card" style="background: var(--color-rose-soft); border-radius: var(--radius-md); border: 1px solid var(--color-rose-medium); box-shadow: var(--shadow-sm);">
+        <div class="highlight-number" id="statUnread" style="color: var(--color-rose-deep);">0</div>
+        <div class="highlight-label" style="color: var(--color-rose-deep); font-weight: 700;">Unread / New Inquiries</div>
+      </div>
+      <div class="highlight-card" style="background: white; border-radius: var(--radius-md); border: 1px solid var(--color-border); box-shadow: var(--shadow-sm);">
+        <div class="highlight-number" id="statRead" style="color: #4a7c59;">0</div>
+        <div class="highlight-label">Processed & Read</div>
+      </div>
+      <div class="highlight-card" style="background: white; border-radius: var(--radius-md); border: 1px solid var(--color-border); box-shadow: var(--shadow-sm);">
+        <div class="highlight-number" id="statToday" style="color: var(--color-primary);">0</div>
+        <div class="highlight-label">Received Today</div>
+      </div>
+    </div>
+
+    <!-- Controls & Filters -->
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; background: white; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border); box-shadow: var(--shadow-sm);">
+      <!-- Status Filter Tabs -->
+      <div class="gallery-filters" style="margin-bottom: 0;">
+        <button class="filter-btn active" data-admin-filter="all">All Inquiries</button>
+        <button class="filter-btn" data-admin-filter="unread"><i class="fas fa-envelope"></i> Unread Only</button>
+        <button class="filter-btn" data-admin-filter="read"><i class="fas fa-check-double"></i> Read / Handled</button>
+      </div>
+
+      <!-- Search Box -->
+      <div style="position: relative; width: 100%; max-width: 320px;">
+        <input type="text" id="adminSearchInput" class="form-input" placeholder="Search by name, email or phone..." aria-label="Search submissions" style="padding-left: 2.5rem;">
+        <i class="fas fa-search" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--color-text-light);"></i>
+      </div>
+    </div>
+
+    <!-- Submissions Container -->
+    <div id="submissionsContainer">
+      <div style="text-align: center; padding: 4rem 1rem; color: var(--color-text-muted);">
+        <i class="fas fa-spinner fa-spin fa-2x" style="color: var(--color-rose-deep); margin-bottom: 1rem;"></i>
+        <p>Fetching submissions from MongoDB Atlas database...</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Consistent Footer -->
+  <footer class="footer" style="margin-top: 4rem;">
+    <div class="container text-center">
+      <div style="font-size: 0.9rem; color: #a39697;">
+        &copy; 2025 Sketch Beauty Salon Admin Portal | Connected to MongoDB Atlas
+      </div>
+    </div>
+  </footer>
+
+  <!-- Admin Authentication & Dashboard Script -->
+  <script src="api-config.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const authOverlay = document.getElementById('adminAuthOverlay');
+      const loginForm = document.getElementById('adminLoginForm');
+      const passwordInput = document.getElementById('adminPassword');
+      const authErrorMsg = document.getElementById('authErrorMsg');
+      const mainContent = document.getElementById('adminMainContent');
+      const logoutBtn = document.getElementById('logoutBtn');
+
+      let allSubmissions = [];
+      let currentFilter = 'all';
+      let adminPassword = '';
+
+      const submissionsContainer = document.getElementById('submissionsContainer');
+      const statTotal = document.getElementById('statTotal');
+      const statUnread = document.getElementById('statUnread');
+      const statRead = document.getElementById('statRead');
+      const statToday = document.getElementById('statToday');
+      const refreshBtn = document.getElementById('refreshBtn');
+      const searchInput = document.getElementById('adminSearchInput');
+      const filterBtns = document.querySelectorAll('[data-admin-filter]');
+
+      // --- 1. STRICT AUTHENTICATION (ALWAYS PROMPT ON VISIT) ---
+      let isUnlocked = false;
+
+      // Always clear any stored sessions so it locks on every single page open/refresh
+      sessionStorage.removeItem('sketch_admin_authenticated');
+      localStorage.removeItem('sketch_admin_authenticated');
+
+      function showLockScreen() {
+        isUnlocked = false;
+        adminPassword = '';
+        authOverlay.style.display = 'flex';
+        mainContent.style.display = 'none';
+        passwordInput.value = '';
+        authErrorMsg.style.display = 'none';
+        setTimeout(() => passwordInput.focus(), 100);
+      }
+
+      function showDashboard() {
+        isUnlocked = true;
+        authOverlay.style.display = 'none';
+        mainContent.style.display = 'block';
+        fetchSubmissions();
+      }
+
+      loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const password = passwordInput.value;
+        const apiBaseUrl = window.API_BASE_URL || '';
+
+        try {
+          const response = await fetch(`${apiBaseUrl}/api/admin/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password })
+          });
+
+          if (!response.ok) {
+            throw new Error('Admin password was not accepted.');
+          }
+
+          adminPassword = password;
+          authErrorMsg.style.display = 'none';
+          showDashboard();
+        } catch (error) {
+          console.error('Admin login failed:', error);
+          authErrorMsg.style.display = 'block';
+          passwordInput.value = '';
+          passwordInput.focus();
+        }
+      });
+
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          showLockScreen();
+        });
+      }
+
+      // Lock automatically if page visibility changes or tab re-focused
+      window.addEventListener('beforeunload', () => {
+        isUnlocked = false;
+      });
+
+      function fetchAdminApi(path, options = {}) {
+        const headers = new Headers(options.headers || {});
+        headers.set('Authorization', `Bearer ${adminPassword}`);
+        return fetch(`${window.API_BASE_URL || ''}${path}`, { ...options, headers });
+      }
+
+      // --- 2. FETCH SUBMISSIONS API ---
+      async function fetchSubmissions() {
+        try {
+          submissionsContainer.innerHTML = `
+            <div style="text-align: center; padding: 4rem 1rem; color: var(--color-text-muted);">
+              <i class="fas fa-spinner fa-spin fa-2x" style="color: var(--color-rose-deep); margin-bottom: 1rem;"></i>
+              <p>Connecting to MongoDB Atlas...</p>
+            </div>`;
+
+          const res = await fetchAdminApi('/api/submissions');
+          const data = await res.json();
+
+          if (data.success) {
+            allSubmissions = data.data;
+            updateStats();
+            renderSubmissions();
+          } else {
+            submissionsContainer.innerHTML = `
+              <div style="text-align: center; padding: 3rem; background: white; border-radius: 16px; border: 1px solid var(--color-border);">
+                <i class="fas fa-exclamation-triangle fa-2x" style="color: #e53935; margin-bottom: 1rem;"></i>
+                <p style="color: var(--color-text-dark); font-weight: 600;">Unable to fetch submissions.</p>
+                <p style="color: var(--color-text-muted); font-size: 0.9rem;">${data.message || 'Ensure server is running and MONGODB_URI is valid.'}</p>
+              </div>`;
+          }
+        } catch (err) {
+          console.error('Fetch error:', err);
+          submissionsContainer.innerHTML = `
+            <div style="text-align: center; padding: 3rem; background: white; border-radius: 16px; border: 1px solid var(--color-border);">
+              <i class="fas fa-plug fa-2x" style="color: #e53935; margin-bottom: 1rem;"></i>
+              <h3 style="margin-bottom: 0.5rem;">Backend Server Offline</h3>
+              <p style="color: var(--color-text-muted); max-width: 500px; margin: 0 auto 1.5rem auto;">
+                Please start server with <strong>npm start</strong> in terminal.
+              </p>
+            </div>`;
+        }
+      }
+
+      // --- 3. STATS CALCULATION ---
+      function updateStats() {
+        const total = allSubmissions.length;
+        const unread = allSubmissions.filter(s => !s.isRead).length;
+        const read = allSubmissions.filter(s => s.isRead).length;
+
+        const todayStr = new Date().toDateString();
+        const todayCount = allSubmissions.filter(s => new Date(s.createdAt).toDateString() === todayStr).length;
+
+        statTotal.textContent = total;
+        statUnread.textContent = unread;
+        statRead.textContent = read;
+        statToday.textContent = todayCount;
+      }
+
+      // --- 4. RENDER LIST ---
+      function renderSubmissions() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+
+        const filtered = allSubmissions.filter(item => {
+          if (currentFilter === 'unread' && item.isRead) return false;
+          if (currentFilter === 'read' && !item.isRead) return false;
+
+          if (searchTerm) {
+            const matchName = item.fullName.toLowerCase().includes(searchTerm);
+            const matchEmail = item.emailAddr.toLowerCase().includes(searchTerm);
+            const matchPhone = item.phoneNum.toLowerCase().includes(searchTerm);
+            const matchService = item.serviceType.toLowerCase().includes(searchTerm);
+            return matchName || matchEmail || matchPhone || matchService;
+          }
+
+          return true;
+        });
+
+        if (filtered.length === 0) {
+          submissionsContainer.innerHTML = `
+            <div style="text-align: center; padding: 4rem 1rem; background: white; border-radius: 16px; border: 1px solid var(--color-border);">
+              <i class="far fa-folder-open fa-3x" style="color: var(--color-text-light); margin-bottom: 1rem;"></i>
+              <h3>No Submissions Found</h3>
+              <p style="color: var(--color-text-muted);">No form submissions match the current filter or search criteria.</p>
+            </div>`;
+          return;
+        }
+
+        let html = '<div style="display: flex; flex-direction: column; gap: 1.25rem;">';
+
+        filtered.forEach(item => {
+          const formattedDate = new Date(item.createdAt).toLocaleString('en-US', {
+            dateStyle: 'medium',
+            timeStyle: 'short'
+          });
+
+          const isUnread = !item.isRead;
+
+          html += `
+            <div class="admin-card ${isUnread ? 'unread-card' : ''}" style="
+              background: white;
+              border-radius: var(--radius-md);
+              border: 1px solid ${isUnread ? 'var(--color-rose-medium)' : 'var(--color-border)'};
+              padding: 1.5rem;
+              box-shadow: ${isUnread ? 'var(--shadow-md)' : 'var(--shadow-sm)'};
+              position: relative;
+              transition: all 0.3s ease;">
+
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-border);">
+
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <div style="
+                    width: 44px; height: 44px; border-radius: 50%;
+                    background-color: ${isUnread ? 'var(--color-rose-soft)' : '#f0f0f0'};
+                    color: ${isUnread ? 'var(--color-rose-deep)' : '#666'};
+                    display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold;">
+                    ${item.fullName.charAt(0).toUpperCase()}
+                  </div>
+                  <div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 2px;">${escapeHtml(item.fullName)}</h3>
+                    <span style="font-size: 0.85rem; color: var(--color-text-muted);"><i class="far fa-clock"></i> Submitted: ${formattedDate}</span>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <span style="
+                    padding: 0.35rem 0.9rem;
+                    border-radius: var(--radius-full);
+                    font-size: 0.8rem;
+                    font-weight: 700;
+                    display: inline-flex; align-items: center; gap: 0.4rem;
+                    background-color: ${isUnread ? '#ffebee' : '#e8f5e9'};
+                    color: ${isUnread ? '#c62828' : '#2e7d32'};">
+                    <i class="${isUnread ? 'fas fa-exclamation-circle' : 'fas fa-check-circle'}"></i>
+                    ${isUnread ? 'NEW UNREAD' : 'CHECKED & READ'}
+                  </span>
+
+                  <!-- Mark as Read / Toggle Button -->
+                  <button onclick="toggleReadStatus('${item._id}', ${!item.isRead})" class="btn ${isUnread ? 'btn-primary' : 'btn-secondary'}" style="padding: 0.45rem 1rem; font-size: 0.82rem;">
+                    <i class="${isUnread ? 'fas fa-check' : 'fas fa-undo'}"></i>
+                    ${isUnread ? 'Mark as Read' : 'Mark Unread'}
+                  </button>
+
+                  <button onclick="deleteSubmission('${item._id}')" class="btn btn-secondary" style="padding: 0.45rem 0.75rem; font-size: 0.82rem; color: #d32f2f; border-color: #ffcdd2;" title="Delete Record">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Content Grid -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-bottom: 1rem; font-size: 0.92rem;">
+                <div>
+                  <strong style="color: var(--color-text-muted); font-size: 0.8rem; text-transform: uppercase; display: block; margin-bottom: 4px;">Contact Info</strong>
+                  <div><i class="fas fa-envelope" style="color: var(--color-rose-deep); width: 18px;"></i> ${escapeHtml(item.emailAddr)}</div>
+                  <div><i class="fas fa-phone" style="color: var(--color-rose-deep); width: 18px;"></i> ${escapeHtml(item.phoneNum)}</div>
+                </div>
+
+                <div>
+                  <strong style="color: var(--color-text-muted); font-size: 0.8rem; text-transform: uppercase; display: block; margin-bottom: 4px;">Service & City</strong>
+                  <div><i class="fas fa-sparkles" style="color: var(--color-primary); width: 18px;"></i> <strong>Service:</strong> ${escapeHtml(item.serviceType)}</div>
+                  <div><i class="fas fa-map-marker-alt" style="color: var(--color-primary); width: 18px;"></i> <strong>City:</strong> ${escapeHtml(item.cityServed)}</div>
+                </div>
+
+                <div>
+                  <strong style="color: var(--color-text-muted); font-size: 0.8rem; text-transform: uppercase; display: block; margin-bottom: 4px;">Preferred Appointment Date</strong>
+                  <div><i class="far fa-calendar-alt" style="color: var(--color-rose-deep); width: 18px;"></i> ${escapeHtml(item.preferredDate || 'Not specified')}</div>
+                </div>
+              </div>
+
+              <!-- Message Text Block -->
+              ${item.userMessage ? `
+                <div style="background-color: var(--color-bg); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border); font-size: 0.9rem; color: var(--color-text-dark);">
+                  <strong style="color: var(--color-text-muted); font-size: 0.8rem; text-transform: uppercase; display: block; margin-bottom: 4px;">Client Message:</strong>
+                  "${escapeHtml(item.userMessage)}"
+                </div>
+              ` : ''}
+
+            </div>`;
+        });
+
+        html += '</div>';
+        submissionsContainer.innerHTML = html;
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+      }
+
+      window.toggleReadStatus = async (id, isRead) => {
+        try {
+          const res = await fetchAdminApi(`/api/submissions/${id}/read`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ isRead })
+          });
+
+          const data = await res.json();
+          if (data.success) {
+            const target = allSubmissions.find(s => s._id === id);
+            if (target) target.isRead = isRead;
+            updateStats();
+            renderSubmissions();
+          } else {
+            alert('Failed to update status: ' + data.message);
+          }
+        } catch (err) {
+          alert('Server communication error.');
+        }
+      };
+
+      window.deleteSubmission = async (id) => {
+        if (!confirm('Are you sure you want to delete this submission record from MongoDB?')) return;
+        try {
+          const res = await fetchAdminApi(`/api/submissions/${id}`, { method: 'DELETE' });
+          const data = await res.json();
+          if (data.success) {
+            allSubmissions = allSubmissions.filter(s => s._id !== id);
+            updateStats();
+            renderSubmissions();
+          }
+        } catch (err) {
+          alert('Error deleting submission.');
+        }
+      };
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentFilter = btn.getAttribute('data-admin-filter');
+          renderSubmissions();
+        });
+      });
+
+      searchInput.addEventListener('input', renderSubmissions);
+      refreshBtn.addEventListener('click', fetchSubmissions);
+
+      // Always show lock screen on page enter / reload
+      showLockScreen();
+    });
+  </script>
+</body>
+</html>

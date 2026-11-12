@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us & Portfolio | Sketch Beauty Salon</title>
+  <meta name="description" content="Learn about Sketch Beauty Salon's story, master portfolio, cities we serve, and custom beauty orders we take for weddings, shoots, and events.">
+  <link rel="stylesheet" href="styles.css">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Header / Navigation (Consistent) -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">S</div>
+        <div class="logo-text">Sketch <span>Beauty Salon</span></div>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active">About Us & Portfolio</a>
+        <a href="contact.html" class="nav-link">Contact & Timings</a>
+        <a href="contact.html#book" class="btn btn-primary" style="margin-left: 0.5rem;">Book Appointment</a>
+      </nav>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Page Banner -->
+    <section class="page-banner">
+      <div class="container">
+        <h1>About Sketch Beauty Salon</h1>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="fas fa-chevron-right" style="font-size: 0.75rem;"></i>
+          <span>About Us & Portfolio</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Our Story Section -->
+    <section class="about-intro-section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image-stack">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Sketch Beauty Salon Interior" class="about-img-main">
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80" alt="Stylist Working" class="about-img-sub">
+          </div>
+
+          <div class="about-text">
+            <span class="section-tagline">Our Heritage & Craft</span>
+            <h2>Where Artistry Meets Pastel Luxury</h2>
+            <p>Founded with a passion for subtle elegance and high-end aesthetics, <strong>Sketch Beauty Salon</strong> has evolved into a sanctuary of beauty, self-care, and transformations. We believe that true beauty shines when enhancement is personalized to your unique features.</p>
+            <p>Our salon brings together certified hair couture artists, HD airbrush makeup experts, and skin dermatological estheticians operating in an atmosphere designed around soothing pastel hues and supreme comfort.</p>
+
+            <div class="features-list">
+              <div class="feature-item">
+                <div class="feature-check"><i class="fas fa-check"></i></div>
+                <div>
+                  <strong>Premium Organic Formulations:</strong> We exclusively use cruelty-free, dermatologist-approved luxury products.
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-check"><i class="fas fa-check"></i></div>
+                <div>
+                  <strong>Tailored Consultations:</strong> Every makeover or treatment begins with a dedicated face and hair consultation.
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-check"><i class="fas fa-check"></i></div>
+                <div>
+                  <strong>Hygienic & Serene Environment:</strong> Sterilized tools, private bridal suites, and peaceful ambient atmosphere.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expanded Work Portfolio Section -->
+    <section class="gallery-section" id="portfolio" style="background-color: var(--color-surface-soft);">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-tagline">Extended Portfolio</span>
+          <h2 class="section-title">Explore Our Work Showcase</h2>
+          <p class="section-subtitle">Browse through our curated collection of hair styling, bridal glams, and skin treatments created for our clients.</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="gallery-filters">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="bridal">Bridal & Weddings</button>
+          <button class="filter-btn" data-filter="hair">Hair Styling & Color</button>
+          <button class="filter-btn" data-filter="makeup">Event Glam</button>
+          <button class="filter-btn" data-filter="skin">Skin Care</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+          <!-- Card 1 -->
+          <div class="work-card" data-category="bridal">
+            <div class="work-image-holder">
+              <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=600&q=80" alt="Royal Velvet Bridal">
+              <span class="work-badge">Bridal Package</span>
+            </div>
+            <div class="work-details">
+              <h3>Royal Velvet Bridal Makeup</h3>
+              <p>Full HD bridal look featuring soft rose gold eyelids, subtle contouring, and flower-adorned braided updo.</p>
+              <div class="work-footer">
+                <span><i class="far fa-heart"></i> Bridal Favorite</span>
+                <span>Bridal Order</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="work-card" data-category="hair">
+            <div class="work-image-holder">
+              <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&q=80" alt="Pastel Blonde Balayage">
+              <span class="work-badge">Hair Color</span>
+            </div>
+            <div class="work-details">
+              <h3>Pastel Blonde & Rose Gold Balayage</h3>
+              <p>Seamless gradient hand-painted balayage with anti-breakage bond builder treatment.</p>
+              <div class="work-footer">
+                <span><i class="fas fa-cut"></i> Balayage</span>
+                <span>Hair Couture</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="work-card" data-category="makeup">
+            <div class="work-image-holder">
+              <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80" alt="Glow Event Makeup">
+              <span class="work-badge">Glam Makeup</span>
+            </div>
+            <div class="work-details">
+              <h3>Dewy Soft Glam Makeup</h3>
+              <p>Glass skin finish with winged eye accent and nude berry lipstick for an evening awards gala.</p>
+              <div class="work-footer">
+                <span><i class="fas fa-star"></i> Red Carpet</span>
+                <span>Gala Makeup</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="work-card" data-category="skin">
+            <div class="work-image-holder">
+              <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" alt="Rejuvenating facial skin treatment">
+              <span class="work-badge">Skin Care</span>
+            </div>
+            <div class="work-details">
+              <h3>Hydrating Facial Treatment</h3>
+              <p>A personalized facial with nourishing ingredients to refresh skin and support a healthy-looking glow.</p>
+              <div class="work-footer">
+                <span><i class="fas fa-spa"></i> Skin Treatment</span>
+                <span>Healthy Glow</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="work-card" data-category="bridal">
+            <div class="work-image-holder">
+              <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80" alt="Sangeet & Mehendi Look">
+              <span class="work-badge">Bridal Event</span>
+            </div>
+            <div class="work-details">
+              <h3>Mehendi & Sangeet Look</h3>
+              <p>Vibrant yet pastel-themed makeover with waterproof eye detailing and messy textured curls.</p>
+              <div class="work-footer">
+                <span><i class="fas fa-heart"></i> Pre-Wedding</span>
+                <span>Bridal Suite</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="work-card" data-category="hair">
+            <div class="work-image-holder">
+              <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=600&q=80" alt="Keratin Treatment & Cut">
+              <span class="work-badge">Hair Spa</span>
+            </div>
+            <div class="work-details">
+              <h3>Silk Protein Keratin Smooth</h3>
+              <p>Frizz-free silk smoothing treatment giving sleek, manageable, high-shine hair for up to 6 months.</p>
+              <div class="work-footer">
+                <span><i class="fas fa-magic"></i> Hair Spa</span>
+                <span>Keratin</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Orders We Take For Section -->
+    <section class="orders-section" id="orders">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-tagline">Custom Bookings & Assignments</span>
+          <h2 class="section-title">Orders We Take For</h2>
+          <p class="section-subtitle">Sketch Beauty Salon accepts special custom orders and bulk package bookings for diverse occasions, both in-salon and on-location.</p>
+        </div>
+
+        <div class="orders-grid">
+          <!-- Order Item 1 -->
+          <div class="order-card">
+            <h3><i class="fas fa-crown" style="color: var(--color-rose-deep); margin-right: 0.5rem;"></i> Bridal & Wedding Parties</h3>
+            <p>Comprehensive packages for the bride, mother of the bride, maid of honor, and bridal party groups. Includes pre-wedding trial sessions, facial glow rituals, and full event-day styling.</p>
+            <div class="order-tags">
+              <span class="order-tag">Full Bridal Suite</span>
+              <span class="order-tag">HD Airbrush</span>
+              <span class="order-tag">Draping & Hair</span>
+            </div>
+          </div>
+
+          <!-- Order Item 2 -->
+          <div class="order-card">
+            <h3><i class="fas fa-camera" style="color: var(--color-primary); margin-right: 0.5rem;"></i> Fashion & Editorial Shoots</h3>
+            <p>On-site hair and makeup artists available for commercial photography, magazine shoots, brand lookbooks, and fashion shows with quick touch-up support.</p>
+            <div class="order-tags">
+              <span class="order-tag">On-Location</span>
+              <span class="order-tag">High-Definition</span>
+              <span class="order-tag">Full Day / Half Day</span>
+            </div>
+          </div>
+
+          <!-- Order Item 3 -->
+          <div class="order-card">
+            <h3><i class="fas fa-glass-cheers" style="color: var(--color-rose-deep); margin-right: 0.5rem;"></i> Reception & Red Carpet Events</h3>
+            <p>Exclusive glam styling for gala dinners, award ceremonies, birthday milestones, and high-profile corporate celebrations.</p>
+            <div class="order-tags">
+              <span class="order-tag">Gala Makeovers</span>
+              <span class="order-tag">Cocktail Looks</span>
+              <span class="order-tag">Group Discounts</span>
+            </div>
+          </div>
+
+          <!-- Order Item 4 -->
+          <div class="order-card">
+            <h3><i class="fas fa-home" style="color: var(--color-primary); margin-right: 0.5rem;"></i> Destination & VIP Home Services</h3>
+            <p>Prefer beauty services at your doorstep, luxury hotel suite, or destination venue? Our mobile master artists travel directly to your location with complete equipment.</p>
+            <div class="order-tags">
+              <span class="order-tag">Mobile Salon</span>
+              <span class="order-tag">Hotel & Venue</span>
+              <span class="order-tag">Destination Travel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cities We Serve Section -->
+    <section class="cities-section" id="cities">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-tagline">Coverage & Locations</span>
+          <h2 class="section-title">Vadodara Areas & Gujarat Coverage</h2>
+          <p class="section-subtitle">Sketch Beauty Salon provides in-studio services at Chhani, Vadodara, alongside mobile bridal & event makeover dispatch across Vadodara and neighboring regions.</p>
+        </div>
+
+        <div class="cities-grid">
+          <!-- Area 1 -->
+          <div class="city-card">
+            <div class="city-icon"><i class="fas fa-store"></i></div>
+            <div class="city-info">
+              <h4>Chhani, Vadodara</h4>
+              <p>Flagship Studio (Near Podar World School)</p>
+            </div>
+          </div>
+
+          <!-- Area 2 -->
+          <div class="city-card">
+            <div class="city-icon"><i class="fas fa-map-pin"></i></div>
+            <div class="city-info">
+              <h4>Alkapuri & Old Padra Rd</h4>
+              <p>In-Studio & VIP Doorstep Care</p>
+            </div>
+          </div>
+
+          <!-- Area 3 -->
+          <div class="city-card">
+            <div class="city-icon"><i class="fas fa-city"></i></div>
+            <div class="city-info">
+              <h4>Vasna, Bhayli & Sevasi</h4>
+              <p>Bridal Makeup & Home Services</p>
+            </div>
+          </div>
+
+          <!-- Area 4 -->
+          <div class="city-card">
+            <div class="city-icon"><i class="fas fa-spa"></i></div>
+            <div class="city-info">
+              <h4>Gotri, Subhanpura & Akota</h4>
+              <p>On-Site Hair & Glam Makeup</p>
+            </div>
+          </div>
+
+          <!-- Area 5 -->
+          <div class="city-card">
+            <div class="city-icon"><i class="fas fa-heart"></i></div>
+            <div class="city-info">
+              <h4>Fatehgunj & Karelibaug</h4>
+              <p>Pre-Wedding & Group Orders</p>
+            </div>
+          </div>
+
+          <!-- Area 6 -->
+          <div class="city-card">
+            <div class="city-icon"><i class="fas fa-plane-departure"></i></div>
+            <div class="city-info">
+              <h4>Anand, Nadiad & Beyond</h4>
+              <p>Destination Bridal Travel</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 3rem; background-color: var(--color-rose-soft); padding: 2rem; border-radius: var(--radius-md); text-align: center; border: 1px solid var(--color-border);">
+          <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Need On-Location Bridal Services?</h3>
+          <p style="color: var(--color-text-muted); max-width: 650px; margin: 0 auto 1.25rem auto;">We frequently travel for destination weddings across Gujarat and India. Connect directly on WhatsApp with our team.</p>
+          <a href="https://wa.me/919665166444" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background-color: #25D366; border-color: #25D366;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Consistent Footer Across All Pages -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon">S</div>
+            <div class="logo-text">Sketch <span>Beauty Salon</span></div>
+          </div>
+          <p>Sketch Beauty Salon is your premier sanctuary for luxury hair styling, flawless bridal makeup, and rejuvenating skin treatments.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/vidhi.nihalani.08?utm_source=ig_web_button_share_sheet&mdxt=ZDNlZDc0MzIxNw==" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1JdV1Z1Jsm/" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/919665166444" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="WhatsApp" style="background-color: #25D366; color: white;" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Navigation</h4>
+          <ul class="footer-nav">
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home Page</a></li>
+            <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us & Story</a></li>
+            <li><a href="about.html#portfolio"><i class="fas fa-chevron-right"></i> Work Portfolio</a></li>
+            <li><a href="about.html#cities"><i class="fas fa-chevron-right"></i> Vadodara Locations</a></li>
+            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact & Timings</a></li>
+          </ul>
+        </div>
+
+        <!-- Services List -->
+        <div class="footer-col">
+          <h4>Our Services</h4>
+          <ul class="footer-nav">
+            <li><a href="about.html#orders"><i class="fas fa-sparkles"></i> Bridal Makeovers</a></li>
+            <li><a href="about.html#orders"><i class="fas fa-sparkles"></i> Hair Cut & Balayage</a></li>
+            <li><a href="about.html#orders"><i class="fas fa-sparkles"></i> Skin Hydra Facials</a></li>
+            <li><a href="about.html#orders"><i class="fas fa-sparkles"></i> Skin Care & Facials</a></li>
+            <li><a href="about.html#orders"><i class="fas fa-sparkles"></i> On-Location Shoots</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info & Newsletter -->
+        <div class="footer-col">
+          <h4>Contact & Info</h4>
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>D202, Avaneesh Hieghts, Near Podar World School, Canal Rd, Chhani, Vadodara, 391740</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fab fa-whatsapp" style="color: #25D366; font-size: 1.1rem;"></i>
+            <a href="https://wa.me/919665166444" target="_blank" rel="noopener noreferrer" style="color: #25D366; font-weight: 700;">WhatsApp</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <span><a href="mailto:sketchbeauty1980@gmail.com" style="color: inherit;">sketchbeauty1980@gmail.com</a></span>
+          </div>
+
+          <p style="font-size: 0.85rem; margin-top: 1.2rem; color: #a39697;">Subscribe to receive special pastel beauty offers:</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Sketch Beauty Salon offers!');">
+            <input type="email" class="newsletter-input" placeholder="Your email address" aria-label="Your email address for newsletter subscription" required>
+            <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2025 Sketch Beauty Salon. All rights reserved. Crafting Elegance Daily.</div>
+        <div style="display: flex; gap: 1.5rem; align-items: center;">
+          <a href="#" style="color: inherit;">Privacy Policy</a>
+          <a href="#" style="color: inherit;">Terms of Service</a>
+          <a href="#" style="color: inherit;">Bookings</a>
+          <a href="admin.html" aria-label="Admin Access" style="color: inherit; opacity: 0.25; display: inline-flex; align-items: center; transition: opacity 0.3s;" onmouseenter="this.style.opacity='0.8'" onmouseleave="this.style.opacity='0.25'">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="api-config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
