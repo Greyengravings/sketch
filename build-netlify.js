@@ -8,7 +8,11 @@ const frontendFiles = [
   'contact.html',
   'admin.html',
   'styles.css',
-  'script.js'
+  'script.js',
+  'bridal.jpg',
+  'editorial_glam.jpg',
+  'headerlogo.png',
+  'logobgremoved.png'
 ];
 const renderApiUrl = process.env.RENDER_API_URL?.trim().replace(/\/+$/, '')
   || 'https://sketch-gg29.onrender.com';

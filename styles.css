@@ -142,6 +142,15 @@ h1, h2, h3, h4, .heading-font {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-img {
+  height: 44px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
 }
 
 .logo-icon {
@@ -161,22 +170,23 @@ h1, h2, h3, h4, .heading-font {
 
 .logo-text {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: 0.5px;
-  color: var(--color-text-dark);
+  color: #000000;
+  white-space: nowrap;
 }
 
 .logo-text span {
-  color: var(--color-rose-deep);
-  font-weight: 400;
-  font-style: italic;
+  color: #000000;
+  font-weight: 700;
+  font-style: normal;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.75rem;
 }
 
 .nav-link {
@@ -1066,6 +1076,14 @@ h1, h2, h3, h4, .heading-font {
 
 .footer-brand .logo-text {
   color: white;
+}
+
+.footer-logo-img {
+  max-height: 70px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 .footer-brand p {
